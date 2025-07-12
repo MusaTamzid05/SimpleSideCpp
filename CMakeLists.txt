@@ -9,6 +9,7 @@ SET(SOURCE_FILES
     src/main.cpp
     src/app.cpp
     src/renderer.cpp
+    src/input.cpp
     )
 
 

@@ -9,6 +9,10 @@ struct App  {
 
     void init();
     void start();
+
+    void update();
+
+
     Renderer* m_renderer;
 
 };
