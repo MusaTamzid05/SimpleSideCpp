@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/musa/c++_pro/raylib_pro/slide/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/raylib_pro/slide/include  -std=c++11 -g -o CMakeFiles/slide.dir/src/main.cpp.o -c /home/musa/c++_pro/raylib_pro/slide/src/main.cpp",
+  "file": "/home/musa/c++_pro/raylib_pro/slide/src/main.cpp"
+},
+{
+  "directory": "/home/musa/c++_pro/raylib_pro/slide/build",
+  "command": "/usr/bin/c++  -I/home/musa/c++_pro/raylib_pro/slide/include  -std=c++11 -g -o CMakeFiles/slide.dir/src/app.cpp.o -c /home/musa/c++_pro/raylib_pro/slide/src/app.cpp",
+  "file": "/home/musa/c++_pro/raylib_pro/slide/src/app.cpp"
+}
+]
