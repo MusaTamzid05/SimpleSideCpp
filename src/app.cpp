@@ -15,6 +15,8 @@ App::~App() {
 void App::init() {
     m_renderer = new Renderer();
     m_renderer->init();
+    pages.push_back(Page("This is pages"));
+    m_renderer->page = &pages[0];
 
 }
 
@@ -34,5 +36,9 @@ void App::update() {
         std::cout << position.x << " " << position.y << "\n";
 
     }
+
+}
+
+void App::render() {
 
 }

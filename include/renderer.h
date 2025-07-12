@@ -3,6 +3,9 @@
 
 #include <raylib.h>
 
+
+struct Page;
+
 struct Renderer {
     Renderer();
     virtual ~Renderer();
@@ -14,6 +17,7 @@ struct Renderer {
     void render();
 
     Color background_color;
+    Page* page;
 };
 
 #endif

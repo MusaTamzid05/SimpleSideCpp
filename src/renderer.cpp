@@ -1,9 +1,12 @@
 #include "renderer.h"
 #include "consts.h"
+#include "page.h"
 #include <raylib.h>
 #include <iostream>
 
-Renderer::Renderer():ready(false) {
+Renderer::Renderer():
+    ready(false),
+    page(nullptr) {
 }
 
 Renderer::~Renderer() {
@@ -25,7 +28,7 @@ void Renderer::render() {
     }
     BeginDrawing();
         ClearBackground(background_color);
-        DrawText("This is a test" , 180, 200, 20, LIGHTGRAY);
+        DrawText(page->title.c_str() , 180, 200, 20, LIGHTGRAY);
     EndDrawing();
 
 }

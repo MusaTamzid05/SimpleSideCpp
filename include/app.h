@@ -2,8 +2,10 @@
 #define APP_H
 
 #include "renderer.h"
+#include <vector>
+#include "page.h"
 
-struct App  {
+struct App {
     App();
     virtual ~App();
 
@@ -11,9 +13,10 @@ struct App  {
     void start();
 
     void update();
-
+    void render();
 
     Renderer* m_renderer;
+    std::vector<Page> pages;
 
 };
 
