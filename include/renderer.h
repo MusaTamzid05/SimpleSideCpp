@@ -1,6 +1,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include <raylib.h>
+
 struct Renderer {
     Renderer();
     virtual ~Renderer();
@@ -10,6 +12,8 @@ struct Renderer {
 
     void init();
     void render();
+
+    Color background_color;
 };
 
 #endif

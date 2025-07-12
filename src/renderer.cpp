@@ -14,6 +14,7 @@ void Renderer::init() {
     InitWindow(WIDTH, HEIGHT, "Window");
     SetTargetFPS(FPS);
     ready = true;
+    background_color = (Color){44, 62, 80, 255};
 
 }
 
@@ -23,7 +24,7 @@ void Renderer::render() {
         return;
     }
     BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(background_color);
         DrawText("This is a test" , 180, 200, 20, LIGHTGRAY);
     EndDrawing();
 
