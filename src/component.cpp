@@ -16,3 +16,8 @@ TextFieldComponent::~TextFieldComponent() {
 void TextFieldComponent::update() {
 
 }
+
+void TextFieldComponent::render(Renderer* renderer) {
+    renderer->draw_rect(x, y, width, height);
+
+}

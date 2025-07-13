@@ -23,3 +23,11 @@ void Page::update() {
     }
 
 }
+
+void Page::render(Renderer* renderer) {
+    for(TextFieldComponent* text_field_component : text_field_components)
+        text_field_component->render(renderer);
+    
+
+
+}

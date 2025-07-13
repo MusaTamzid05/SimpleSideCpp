@@ -38,15 +38,7 @@ void App::update() {
 
 void App::render() {
     m_renderer->render_start();
-    Page* page = pages[current_page_index];
-
-    for(TextFieldComponent* text_field_component : page->text_field_components) {
-        int x = text_field_component->x;
-        int y = text_field_component->y;
-        int width  = text_field_component->width;
-        int height = text_field_component->height;
-        m_renderer->draw_rect(x, y, height, width);
-    }
+    pages[current_page_index]->render(m_renderer);
 
 
     m_renderer->render_end();
