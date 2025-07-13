@@ -1,13 +1,15 @@
 #include "app.h"
-#include "input.h"
 #include <iostream>
 
-App::App() {
+App::App():current_page_index(0) {
 
 }
 
 
 App::~App() {
+    for(Page* page : pages)
+        delete page;
+
     delete m_renderer;
 
 }
@@ -15,15 +17,14 @@ App::~App() {
 void App::init() {
     m_renderer = new Renderer();
     m_renderer->init();
-    pages.push_back(Page("This is pages"));
-    m_renderer->page = &pages[0];
+    pages.push_back(new Page("This is pages"));
 
 }
 
 void App::start() {
     while(m_renderer->window_should_close() == false) {
         update();
-        m_renderer->render();
+        render();
 
     }
 
@@ -31,14 +32,23 @@ void App::start() {
 
 
 void App::update() {
-    if(Input::get_instance()->is_mouse_cliked()) {
-        Vector2 position = Input::get_instance()->get_mouse_position();
-        std::cout << position.x << " " << position.y << "\n";
-
-    }
+    pages[current_page_index]->update();
 
 }
 
 void App::render() {
+    m_renderer->render_start();
+    Page* page = pages[current_page_index];
+
+    for(TextFieldComponent* text_field_component : page->text_field_components) {
+        int x = text_field_component->x;
+        int y = text_field_component->y;
+        int width  = text_field_component->width;
+        int height = text_field_component->height;
+        m_renderer->draw_rect(x, y, height, width);
+    }
+
+
+    m_renderer->render_end();
 
 }

@@ -11,6 +11,7 @@ SET(SOURCE_FILES
     src/renderer.cpp
     src/input.cpp
     src/page.cpp
+    src/component.cpp
     )
 
 

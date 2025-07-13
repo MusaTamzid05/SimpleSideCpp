@@ -4,6 +4,7 @@
 #include "component.h"
 #include "renderer.h"
 #include <string>
+#include <vector>
 
 struct Page : Component {
     Page(const std::string& title);
@@ -11,6 +12,7 @@ struct Page : Component {
     void update();
 
     std::string title;
+    std::vector<TextFieldComponent*> text_field_components;
 
 };
 

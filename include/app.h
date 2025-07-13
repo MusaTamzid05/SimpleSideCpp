@@ -16,7 +16,8 @@ struct App {
     void render();
 
     Renderer* m_renderer;
-    std::vector<Page> pages;
+    std::vector<Page*> pages;
+    int current_page_index;
 
 };
 

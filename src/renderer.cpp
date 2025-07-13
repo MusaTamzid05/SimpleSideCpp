@@ -5,8 +5,7 @@
 #include <iostream>
 
 Renderer::Renderer():
-    ready(false),
-    page(nullptr) {
+    ready(false) {
 }
 
 Renderer::~Renderer() {
@@ -21,18 +20,34 @@ void Renderer::init() {
 
 }
 
-void Renderer::render() {
+bool Renderer::render_start() {
+    if(!ready) {
+        std::cerr << "Please init render\n";
+        return false;
+    }
+
+    BeginDrawing();
+        ClearBackground(background_color);
+
+    return true;
+
+}
+
+
+void Renderer::render_end() {
     if(!ready) {
         std::cerr << "Please init render\n";
         return;
     }
-    BeginDrawing();
-        ClearBackground(background_color);
-        DrawText(page->title.c_str() , 180, 200, 20, LIGHTGRAY);
     EndDrawing();
 
 }
 
 bool Renderer::window_should_close() const {
     return WindowShouldClose();
+}
+
+
+void Renderer::draw_rect(int x, int y, int width, int height) {
+    DrawRectangle(x, y, width, height, LIGHTGRAY);
 }

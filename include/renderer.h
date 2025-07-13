@@ -14,10 +14,12 @@ struct Renderer {
     bool ready;
 
     void init();
-    void render();
+    bool render_start();
+    void render_end();
+
+    void draw_rect(int x, int y, int width, int height);
 
     Color background_color;
-    Page* page;
 };
 
 #endif
