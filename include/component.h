@@ -16,6 +16,7 @@ struct TextFieldComponent : Component {
 
     void update();
     void render(Renderer* renderer);
+    bool is_mouse_hover() const;
 
     int x;
     int y;

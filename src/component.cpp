@@ -1,5 +1,6 @@
 #include "component.h"
 #include "text_component_state.h"
+#include "input.h"
 
 
 TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
@@ -22,4 +23,23 @@ void TextFieldComponent::update() {
 
 void TextFieldComponent::render(Renderer* renderer) {
     state_machine->current_state->render(renderer);
+}
+
+
+bool TextFieldComponent::is_mouse_hover() const {
+    int max_x = x + width;
+    int max_y = y + height;
+
+    Vector2 mouse_pos = Input::get_instance()->get_mouse_position();
+    int mouse_pos_x = mouse_pos.x;
+    int mouse_pos_y = mouse_pos.y;
+
+    if((mouse_pos_x >= x) && (mouse_pos_x <= max_x)
+            && (mouse_pos_y >= y) && (mouse_pos_y <= max_y))
+        return true;
+
+    return false;
+
+
+
 }

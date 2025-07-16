@@ -1,4 +1,5 @@
 #include "text_component_state.h"
+#include <iostream>
 
 namespace TextFild {
     IdealState::IdealState(TextFieldComponent* component):component(component) {
@@ -23,7 +24,8 @@ namespace TextFild {
     }
 
     void IdealState::update() {
-
+        if(component->is_mouse_hover())
+            component->state_machine->change_state(new FocusState(component));
     }
 
     void IdealState::exit() {
@@ -54,6 +56,8 @@ namespace TextFild {
     }
 
     void FocusState::update() {
+        if(component->is_mouse_hover() == false)
+            component->state_machine->change_state(new IdealState(component));
 
     }
 
