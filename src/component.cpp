@@ -1,4 +1,5 @@
 #include "component.h"
+#include "text_component_state.h"
 
 
 TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
@@ -6,6 +7,8 @@ TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
     y(y),
     width(width),
     height(height) {
+        state_machine = new StateMachine();
+        state_machine->change_state(new TextFild::IdealState(this));
 
     }
 
@@ -14,10 +17,9 @@ TextFieldComponent::~TextFieldComponent() {
 }
 
 void TextFieldComponent::update() {
-
+    state_machine->current_state->update();
 }
 
 void TextFieldComponent::render(Renderer* renderer) {
-    renderer->draw_rect(x, y, width, height);
-
+    state_machine->current_state->render(renderer);
 }

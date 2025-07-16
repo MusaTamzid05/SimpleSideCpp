@@ -51,3 +51,8 @@ bool Renderer::window_should_close() const {
 void Renderer::draw_rect(int x, int y, int width, int height) {
     DrawRectangle(x, y, width, height, LIGHTGRAY);
 }
+
+void Renderer::draw_rect_boundaries(int x, int y, int width, int height) {
+    DrawRectangleLines(x, y, width, height, LIGHTGRAY);
+
+}
