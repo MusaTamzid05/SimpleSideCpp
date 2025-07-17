@@ -1,5 +1,6 @@
 #include "text_component_state.h"
 #include <iostream>
+#include "input.h"
 
 namespace TextFild {
     IdealState::IdealState(TextFieldComponent* component):component(component) {
@@ -15,12 +16,7 @@ namespace TextFild {
     }
 
     void IdealState::render(Renderer* renderer) {
-        int x = component->x;
-        int y = component->y;
-        int width  = component->width;
-        int height = component->height;
-
-        renderer->draw_rect(x, y, width, height);
+        component->draw(renderer, RAYWHITE);
     }
 
     void IdealState::update() {
@@ -45,13 +41,8 @@ namespace TextFild {
     }
 
     void FocusState::render(Renderer* renderer) {
-        int x = component->x;
-        int y = component->y;
-        int width  = component->width;
-        int height = component->height;
-
-        renderer->draw_rect(x, y, width, height);
-        renderer->draw_rect_boundaries(x, y, width, height);
+        component->draw(renderer, RAYWHITE);
+        component->draw_boundary(renderer, RED);
 
     }
 
@@ -59,9 +50,47 @@ namespace TextFild {
         if(component->is_mouse_hover() == false)
             component->state_machine->change_state(new IdealState(component));
 
+        if(Input::get_instance()->resize_press())
+            component->state_machine->change_state(new ResizeState(component, 10));
+
+
     }
 
     void FocusState::exit() {
+
+    }
+
+
+    ResizeState::ResizeState(TextFieldComponent* component, int add_value):component(component), add_value(add_value) {
+
+    }
+
+    ResizeState::~ResizeState() {
+
+    }
+
+    void ResizeState::enter() {
+
+    }
+
+    void ResizeState::render(Renderer* renderer) {
+        component->draw(renderer, RAYWHITE);
+        component->draw_boundary(renderer, YELLOW);
+    }
+
+    void ResizeState::update() {
+        if(Input::get_instance()->resize_press())
+            component->state_machine->change_state(new IdealState(component));
+
+        if(Input::get_instance()->add_press()) 
+            component->increase(add_value);
+        else if(Input::get_instance()->reduce_press()) 
+            component->decrease(add_value);
+        
+
+    }
+
+    void ResizeState::exit() {
 
     }
 }

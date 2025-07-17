@@ -18,7 +18,7 @@ struct Renderer {
     void render_end();
 
     void draw_rect(int x, int y, int width, int height);
-    void draw_rect_boundaries(int x, int y, int width, int height);
+    void draw_rect_boundaries(int x, int y, int width, int height, const Color& color);
 
     Color background_color;
 };

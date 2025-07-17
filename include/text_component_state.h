@@ -32,6 +32,20 @@ namespace TextFild {
 
     };
 
+    struct ResizeState : State {
+        ResizeState(TextFieldComponent* component, int add_value);
+        virtual ~ResizeState();
+
+        void enter();
+        void render(Renderer* renderer);
+        void update();
+        void exit();
+
+        TextFieldComponent* component;
+        int add_value;
+
+    };
+
 }
 
 

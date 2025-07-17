@@ -31,3 +31,16 @@ Input* Input::get_instance() {
 bool Input::is_mouse_cliked() const {
     return IsMouseButtonPressed(MOUSE_BUTTON_LEFT);
 }
+
+
+bool Input::resize_press() const {
+    return IsKeyPressed(KEY_R);
+}
+
+bool Input::add_press() const {
+    return IsKeyPressed(KEY_A);
+}
+
+bool Input::reduce_press() const {
+    return IsKeyPressed(KEY_D);
+}

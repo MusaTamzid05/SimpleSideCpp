@@ -18,6 +18,12 @@ struct TextFieldComponent : Component {
     void render(Renderer* renderer);
     bool is_mouse_hover() const;
 
+    void increase(int size);
+    void decrease(int size);
+
+    void draw(Renderer* renderer, const Color& color);
+    void draw_boundary(Renderer* renderer, const Color& color);
+
     int x;
     int y;
     int width;

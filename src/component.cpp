@@ -43,3 +43,30 @@ bool TextFieldComponent::is_mouse_hover() const {
 
 
 }
+
+
+void TextFieldComponent::increase(int size) {
+    x -= size;
+    width += (size * 2);
+    y -= size;
+    height  += (size * 2);
+}
+
+void TextFieldComponent::decrease(int size) {
+    x += size;
+    width -= (size * 2);
+    y += size;
+    height -= (size * 2);
+}
+
+
+void TextFieldComponent::draw(Renderer* renderer, const Color& color) {
+    renderer->draw_rect(x, y, width, height);
+
+}
+
+
+void TextFieldComponent::draw_boundary(Renderer* renderer, const Color& color) {
+    renderer->draw_rect_boundaries(x, y, width, height, color);
+
+}
