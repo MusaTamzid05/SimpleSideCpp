@@ -56,3 +56,8 @@ void Renderer::draw_rect_boundaries(int x, int y, int width, int height, const C
     DrawRectangleLines(x, y, width, height, color);
 
 }
+
+
+void Renderer::draw_text(const std::string& text, int x, int y, int font_size, const Color& color) {
+    DrawText(text.c_str(), x, y, font_size, color);
+}

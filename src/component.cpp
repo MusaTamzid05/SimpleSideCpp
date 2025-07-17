@@ -9,13 +9,15 @@ TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
     y(y),
     width(width),
     height(height) {
+
+        text_component = new TextComponent(x + 10, y + 10, "test");
         state_machine = new StateMachine();
         state_machine->change_state(new TextFild::IdealState(this));
 
     }
 
 TextFieldComponent::~TextFieldComponent() {
-
+    delete text_component;
 }
 
 void TextFieldComponent::update() {
@@ -66,6 +68,7 @@ void TextFieldComponent::decrease(int size) {
 
 void TextFieldComponent::draw(Renderer* renderer, const Color& color) {
     renderer->draw_rect(x, y, width, height);
+    text_component->render(renderer);
 
 }
 
@@ -74,3 +77,40 @@ void TextFieldComponent::draw_boundary(Renderer* renderer, const Color& color) {
     renderer->draw_rect_boundaries(x, y, width, height, color);
 
 }
+
+bool TextFieldComponent::is_inside(const Vector2& target) const {
+    int pos_x = target.x;
+    int pos_y = target.y;
+
+    int max_x = x + width;
+    int max_y = y + height;
+
+    if((pos_x >= x) && (pos_x <= max_x)
+            && (pos_y >= y) && (pos_y <= max_y))
+        return true;
+
+    return false;
+}
+
+TextComponent::TextComponent(int x, int y, const std::string& text):
+    text(text), 
+    x(x), 
+    y(y),
+    font_size(FONT_SIZE) {
+
+}
+
+
+TextComponent::~TextComponent() {
+
+}
+
+void TextComponent::update() {
+
+}
+void TextComponent::render(Renderer* renderer) {
+    renderer->draw_text(text, x, y, font_size, BLACK);
+}
+
+
+
