@@ -10,7 +10,7 @@ TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
     width(width),
     height(height) {
 
-        text_component = new TextComponent(x + 10, y + 10, "test");
+        text_component = new TextComponent(x + TEXT_OFFSET, y + TEXT_OFFSET, "test");
         state_machine = new StateMachine();
         state_machine->change_state(new TextFild::IdealState(this));
 
