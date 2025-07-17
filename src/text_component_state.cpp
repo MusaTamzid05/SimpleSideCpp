@@ -53,6 +53,9 @@ namespace TextFild {
         if(Input::get_instance()->resize_press())
             component->state_machine->change_state(new ResizeState(component, 10));
 
+        else if(Input::get_instance()->edit_press()) 
+            component->state_machine->change_state(new EditTextState(component));
+
 
     }
 
@@ -84,8 +87,10 @@ namespace TextFild {
 
         if(Input::get_instance()->add_press()) 
             component->increase(add_value);
+
         else if(Input::get_instance()->reduce_press()) 
             component->decrease(add_value);
+
         
 
     }
@@ -93,4 +98,67 @@ namespace TextFild {
     void ResizeState::exit() {
 
     }
+
+    EditTextState::EditTextState(TextFieldComponent* component):
+        component(component) {
+
+        }
+
+    EditTextState::~EditTextState() {
+
+    }
+
+    void EditTextState::enter() {
+
+    }
+
+    void EditTextState::render(Renderer* renderer) {
+        component->draw(renderer, RAYWHITE);
+        component->draw_boundary(renderer, BLUE);
+    }
+
+    void EditTextState::update() {
+        std::string input = Input::get_instance()->get_input_as_string();
+
+        if(input == "")
+            return;
+
+
+        TextComponent* text_component = component->text_component;
+
+        if(input == Input::get_instance()->BACKSPACE) {
+            if(text_component->text.size())
+                text_component->text.pop_back();
+            return;
+        }
+
+        text_component->text += input;
+        
+
+    }
+
+    void EditTextState::exit() {
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

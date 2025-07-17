@@ -46,6 +46,20 @@ namespace TextFild {
 
     };
 
+
+    struct EditTextState : State {
+        EditTextState(TextFieldComponent* component);
+        virtual ~EditTextState();
+
+        void enter();
+        void render(Renderer* renderer);
+        void update();
+        void exit();
+
+        TextFieldComponent* component;
+
+    };
+
 }
 
 
