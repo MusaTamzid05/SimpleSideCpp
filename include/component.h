@@ -11,8 +11,10 @@ struct Component {
 
 };
 
+struct TextFieldComponent;
+
 struct TextComponent : Component {
-    TextComponent(int x, int y, const std::string& text="");
+    TextComponent(TextFieldComponent* parent, const std::string& text="");
     virtual ~TextComponent();
 
     void update();
@@ -20,8 +22,7 @@ struct TextComponent : Component {
 
     std::string text;
 
-    int x;
-    int y;
+    TextFieldComponent* parent;
     int font_size;
 
 

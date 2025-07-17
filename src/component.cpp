@@ -10,7 +10,7 @@ TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
     width(width),
     height(height) {
 
-        text_component = new TextComponent(x + TEXT_OFFSET, y + TEXT_OFFSET, "test");
+        text_component = new TextComponent(this, "test");
         state_machine = new StateMachine();
         state_machine->change_state(new TextFild::IdealState(this));
 
@@ -92,10 +92,9 @@ bool TextFieldComponent::is_inside(const Vector2& target) const {
     return false;
 }
 
-TextComponent::TextComponent(int x, int y, const std::string& text):
+TextComponent::TextComponent(TextFieldComponent* parent, const std::string& text):
     text(text), 
-    x(x), 
-    y(y),
+    parent(parent),
     font_size(FONT_SIZE) {
 
 }
@@ -109,7 +108,7 @@ void TextComponent::update() {
 
 }
 void TextComponent::render(Renderer* renderer) {
-    renderer->draw_text(text, x, y, font_size, BLACK);
+    renderer->draw_text(text, parent->x + TEXT_OFFSET, parent->y + TEXT_OFFSET, font_size, BLACK);
 }
 
 
