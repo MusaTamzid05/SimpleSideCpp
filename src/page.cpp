@@ -1,5 +1,6 @@
 #include "page.h"
 #include "input.h"
+#include "consts.h"
 #include <iostream>
 
 Page::Page(const std::string& title):title(title) {
@@ -17,7 +18,11 @@ Page::~Page() {
 void Page::update() {
     if(Input::get_instance()->is_mouse_cliked()) {
         Vector2 position = Input::get_instance()->get_mouse_position();
-        text_field_components.push_back(new TextFieldComponent(position.x, position.y , 100, 100));
+        text_field_components.push_back(new TextFieldComponent(
+                    position.x,
+                    position.y,
+                    TEXT_COMPONENT_DEFAULT_SIZE ,
+                    TEXT_COMPONENT_DEFAULT_SIZE));
 
     }
 

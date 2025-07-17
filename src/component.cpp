@@ -1,6 +1,7 @@
 #include "component.h"
 #include "text_component_state.h"
 #include "input.h"
+#include "consts.h"
 
 
 TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
@@ -53,6 +54,9 @@ void TextFieldComponent::increase(int size) {
 }
 
 void TextFieldComponent::decrease(int size) {
+    if((height  <= TEXT_COMPONENT_MIN_SIZE) || (width <+ TEXT_COMPONENT_MIN_SIZE))
+        return;
+
     x += size;
     width -= (size * 2);
     y += size;
