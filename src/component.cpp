@@ -2,6 +2,8 @@
 #include "text_component_state.h"
 #include "input.h"
 #include "consts.h"
+#include "utils.h"
+#include <iostream>
 
 
 TextFieldComponent::TextFieldComponent(int x, int y, int width, int height):
@@ -108,8 +110,39 @@ void TextComponent::update() {
 
 }
 void TextComponent::render(Renderer* renderer) {
-    renderer->draw_text(text, parent->x + TEXT_OFFSET, parent->y + TEXT_OFFSET, font_size, BLACK);
+
+    std::vector<std::string> texts;
+    std::string line = "";
+    int parent_width = parent->width;
+
+    for(char current_char : text)  {
+        line += current_char;
+
+        if(utils::get_render_text_size(line, font_size) >= parent_width ) {
+            line.pop_back();
+            texts.push_back(line);
+
+            line = "";
+            line += current_char;
+        }
+    }
+
+    texts.push_back(line);
+    int y_axis_offset = 0;
+    const int MAX_Y_LINE_OFFSET = 20;
+
+    for(const std::string line : texts) {
+        renderer->draw_text(line,
+                parent->x + TEXT_OFFSET,
+                parent->y + TEXT_OFFSET + y_axis_offset,
+                font_size, BLACK);
+
+        y_axis_offset += MAX_Y_LINE_OFFSET;
+
+    }
 }
+
+
 
 
 

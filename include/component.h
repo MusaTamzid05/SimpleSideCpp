@@ -4,6 +4,7 @@
 #include "renderer.h"
 #include "state_machine.h"
 #include <string>
+#include <vector>
 
 struct Component {
     virtual void update() = 0;
@@ -21,6 +22,12 @@ struct TextComponent : Component {
     void render(Renderer* renderer);
 
     std::string text;
+
+    // we cannot directly render text on screen
+    // bacause we need add line break when we
+    // reach the parent width, this func
+    // breaks the line when we hit the parent
+    // width
 
     TextFieldComponent* parent;
     int font_size;

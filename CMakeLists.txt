@@ -14,6 +14,7 @@ SET(SOURCE_FILES
     src/component.cpp
     src/state_machine.cpp
     src/text_component_state.cpp
+    src/utils.cpp
     )
 
 

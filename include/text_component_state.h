@@ -14,7 +14,7 @@ namespace TextFild {
         void update();
         void exit();
 
-        TextFieldComponent* component;
+        TextFieldComponent* text_field_component;
 
     };
 
@@ -28,7 +28,7 @@ namespace TextFild {
         void update();
         void exit();
 
-        TextFieldComponent* component;
+        TextFieldComponent* text_field_component;
 
     };
 
@@ -41,7 +41,7 @@ namespace TextFild {
         void update();
         void exit();
 
-        TextFieldComponent* component;
+        TextFieldComponent* text_field_component;
         int add_value;
 
     };
@@ -56,7 +56,7 @@ namespace TextFild {
         void update();
         void exit();
 
-        TextFieldComponent* component;
+        TextFieldComponent* text_field_component;
 
     };
 
